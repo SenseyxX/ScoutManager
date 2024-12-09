@@ -1,6 +1,11 @@
-var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+using FastEndpoints;
+using FastEndpoints.Swagger;
 
-app.MapGet("/", () => "Hello World!");
+var bld = WebApplication.CreateBuilder();
+bld.Services.AddFastEndpoints();
+bld.Services.SwaggerDocument();
 
+var app = bld.Build();
+app.UseFastEndpoints();
+app.UseSwaggerGen();
 app.Run();
