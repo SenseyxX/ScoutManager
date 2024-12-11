@@ -79,9 +79,9 @@ internal sealed class UserTypeConfiguration : IEntityTypeConfiguration<User>
                 .HasForeignKey(item => item.OwnerId)
                 .OnDelete(DeleteBehavior.NoAction);
 
-            // entityTypeBuilder
-            //     .HasMany(user => user.Dues)
-            //     .WithOne()
-            //     .HasForeignKey(due => due.UserId);
+            entityTypeBuilder
+                .HasMany(user => user.Dues)
+                .WithOne()
+                .HasForeignKey(due => due.UserId);
         }
     }

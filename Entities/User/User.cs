@@ -27,7 +27,7 @@ public sealed class User : Aggregate
         TeamId = teamId;
         OwnedItems = new List<Item.Item>();
         StoredItems = new List<Item.Item>();
-        // Dues = new List<Due>();
+        Dues = new List<Due>();
     }
     public string Name { get; private set; }
     public string LastName { get; private set; }
@@ -40,6 +40,6 @@ public sealed class User : Aggregate
     public Guid? TeamId { get; }
     public ICollection<Item.Item> OwnedItems { get; }
     public ICollection<Item.Item> StoredItems { get; }
-    // public ICollection<Due> Dues { get; }
+    public ICollection<Due> Dues { get; }
     
 }

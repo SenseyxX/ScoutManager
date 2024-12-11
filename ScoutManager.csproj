@@ -21,4 +21,10 @@
       <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.2" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Endpoints\RentalEndpoints\" />
+      <Folder Include="Factories\" />
+      <Folder Include="Repositories\" />
+    </ItemGroup>
+
 </Project>
