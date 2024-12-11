@@ -21,7 +21,7 @@ internal sealed class DueTypeConfiguration : IEntityTypeConfiguration<Due>
 
         entityTypeBuilder
             .Property(nameof(Due.Half))
-            .HasColumnType("tinyint")
+            .HasColumnType("smallint")
             .HasColumnName(nameof(Due.Half))
             .IsRequired();
 
@@ -33,7 +33,7 @@ internal sealed class DueTypeConfiguration : IEntityTypeConfiguration<Due>
 
         entityTypeBuilder
             .Property(nameof(Due.DueStatus))
-            .HasColumnType("tinyint")
+            .HasColumnType("smallint")
             .HasColumnName(nameof(Due.DueStatus))
             .IsRequired();
     }

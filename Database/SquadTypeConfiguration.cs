@@ -22,7 +22,7 @@ internal sealed class SquadTypeConfiguration : IEntityTypeConfiguration<Squad>
 
         entityTypeBuilder
             .Property(nameof(Squad.State))
-            .HasColumnType("tinyint")
+            .HasColumnType("smallint")
             .HasColumnName(nameof(Squad.State))
             .IsRequired();
 

@@ -32,7 +32,7 @@ internal sealed class TeamTypeConfiguration : IEntityTypeConfiguration<Team>
 
         entityTypeBuilder
             .Property(nameof(Team.Points))
-            .HasColumnType("tinyint")
+            .HasColumnType("smallint")
             .HasColumnName(nameof(Team.Points));
 
         entityTypeBuilder

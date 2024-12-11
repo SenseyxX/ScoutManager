@@ -28,7 +28,7 @@ internal sealed class CategoryTypeConfiguration : IEntityTypeConfiguration<Categ
 
         entityTypeBuilder
             .Property(nameof(Category.State))
-            .HasColumnType("tinyint")
+            .HasColumnType("smallint")
             .HasColumnName(nameof(Category.State))
             .IsRequired();
 

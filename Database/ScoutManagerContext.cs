@@ -10,10 +10,15 @@ public sealed class ScoutManagerContext : DbContext
 {
     public const string DefaultSchemaName = "ScoutManager";
 
+    public ScoutManagerContext()
+    {
+    }
+    
     public ScoutManagerContext(DbContextOptions<ScoutManagerContext> options)
         : base(options)
     {
     }
+    
     public DbSet<Category> Categories { get; init; }
     public DbSet<Due> Dues { get; init; }
     public DbSet<Item> Items { get; init; }
@@ -24,6 +29,10 @@ public sealed class ScoutManagerContext : DbContext
     public DbSet<User> Users { get; init; }
     public DbSet<Team> Teams { get; init; }
 
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=ScoutManager;Username=postgres;Password=postgres");
+    }
 
     // Inicjowanie plików konfiguracyjnych encje
     protected override void OnModelCreating(ModelBuilder modelBuilder)

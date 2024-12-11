@@ -51,13 +51,13 @@ internal sealed class UserTypeConfiguration : IEntityTypeConfiguration<User>
 
             entityTypeBuilder
                 .Property(nameof(User.State))
-                .HasColumnType("tinyint")
+                .HasColumnType("smallint")
                 .HasColumnName(nameof(User.State))
                 .IsRequired();
 
             entityTypeBuilder
                 .Property(nameof(User.PermissionLevel))
-                .HasColumnType("tinyint")
+                .HasColumnType("smallint")
                 .HasColumnName(nameof(User.PermissionLevel))
                 .IsRequired();
 
