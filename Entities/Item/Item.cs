@@ -26,7 +26,7 @@ public sealed class
         State = state;
         OwnerId = ownerId;
         ActualOwnerId = actualOwnerId;
-        // LoanHistories = new List<LoanHistory>(); // Stworzenie listy i przypisanie do propa
+        LoanHistories = new List<LoanHistory>(); // Stworzenie listy i przypisanie do propa
     }
 
     public string Name { get; private set; }
@@ -37,6 +37,6 @@ public sealed class
     public State State { get; private set; } // Zdefiniowanie wartości która występuje w enumie "State"
     public Guid OwnerId { get;  }
     public Guid ActualOwnerId { get; private set; }
-    // public ICollection<LoanHistory> LoanHistories { get; } // Stworzenie relacji jeden do wielu (jeden Item może mieć wiele LoanHistory)
+    public ICollection<LoanHistory> LoanHistories { get; } // Stworzenie relacji jeden do wielu (jeden Item może mieć wiele LoanHistory)
 
 }

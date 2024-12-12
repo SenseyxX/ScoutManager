@@ -23,8 +23,6 @@
 
     <ItemGroup>
       <Folder Include="Endpoints\RentalEndpoints\" />
-      <Folder Include="Factories\" />
-      <Folder Include="Repositories\" />
     </ItemGroup>
 
 </Project>
