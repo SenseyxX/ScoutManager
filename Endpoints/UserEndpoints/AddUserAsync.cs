@@ -3,7 +3,7 @@ using ScoutManager.Entities.User;
 
 namespace ScoutManager.Endpoints.UserEndpoints;
 
-public class AddUserAsync : Endpoint<Request>
+public class AddUserAsync : Endpoint<AddUserRequest>
 {
     public override void Configure()
     {
@@ -11,14 +11,14 @@ public class AddUserAsync : Endpoint<Request>
         AllowAnonymous();   // ToDo: Change after apply keycloak
     }
 
-    public override async Task HandleAsync(Request req,CancellationToken ct)
+    public override async Task HandleAsync(AddUserRequest req,CancellationToken ct)
     {
         // To change
         await SendAsync($"Hello, World! {req.Name}!"); // odpowiedź endpointu
     }
 }
 
-public class Request
+public class AddUserRequest
 {
     public string Name { get; init; }
     public string LastName { get; init; }

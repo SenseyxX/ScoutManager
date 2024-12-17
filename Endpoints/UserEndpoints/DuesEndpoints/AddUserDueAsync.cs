@@ -1,13 +1,12 @@
 ﻿namespace ScoutManager.Endpoints.UserEndpoints.DuesEndpoints;
 
-public class UpdateUserDueAsync
+public class AddUserDueAsync
 {
     
 }
-
-public class UpdateUserDueRequest
+public class AddUserDueRequest
 {
     public Guid UserId { get; set; }
-    public Guid DueId { get; set; }
+    public Half Half { get; init; }
     public int Amount { get; init; }
 }
