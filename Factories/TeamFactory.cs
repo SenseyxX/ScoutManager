@@ -3,7 +3,7 @@ using ScoutManager.Entities.Squad;
 
 namespace ScoutManager.Factories;
 
-public class TeamsFactory
+public class TeamFactory
 {
     public static Team Create(
         string name,

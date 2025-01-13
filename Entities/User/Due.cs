@@ -23,4 +23,23 @@ public sealed class Due : Entity
     public int Amount { get; private set; }
     public DueStatus DueStatus { get; private set; }
 
+    internal void UpdateAmount(int amount)
+    {
+        if (DueStatus == DueStatus.Paid || Amount == amount)
+        {
+            throw new Exception();
+        }
+
+        Amount = amount;
+    }
+
+    internal void Pay()
+    {
+        if (DueStatus == DueStatus.Paid)
+        {
+            throw new Exception();
+        }
+
+        DueStatus = DueStatus.Paid;
+    }
 }

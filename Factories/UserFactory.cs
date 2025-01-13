@@ -5,7 +5,7 @@ namespace ScoutManager.Factories;
 
 public class UserFactory
 {
-    public static Entities.User Create(
+    public static User Create(
         string name,
         string lastname,
         byte[] passwordHash,

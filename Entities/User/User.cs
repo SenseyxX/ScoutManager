@@ -1,4 +1,5 @@
 using ScoutManager.Entites.Abstractions;
+using ScoutManager.Factories;
 
 namespace ScoutManager.Entities.User;
 
@@ -42,4 +43,119 @@ public sealed class User : Aggregate
     public ICollection<Item.Item> StoredItems { get; }
     public ICollection<Due> Dues { get; }
     
+    public string FullName()
+        {
+            string fullName = Name + " " + LastName;
+            return fullName;
+        }
+
+        public bool UpdateName(string name)
+        {
+            if (Name == name || string.IsNullOrEmpty(name))
+            {
+                return false;
+            }
+
+            Name = name;
+            return true;
+        }
+
+        public bool UpdateLastName(string lastname)
+        {
+            if (LastName == lastname || string.IsNullOrEmpty(lastname))
+            {
+                return false;
+            }
+
+            LastName = lastname;
+            return true;
+        }
+
+        public bool UpdatePasswordHash(byte[] passwordHash)
+        {
+            if (PasswordHash == passwordHash || passwordHash.Length <= 0)
+            {
+                return false;
+            }
+
+            PasswordHash = passwordHash;
+            return true;
+        }
+
+        public bool UpdateEmail(string email)
+        {
+            if (Email == email || string.IsNullOrEmpty(email))
+            {
+                return false;
+            }
+
+            Email = email;
+            return true;
+        }
+
+        public bool UpdatePhoneNumber(string phoneNumber)
+        {
+            if (PhoneNumber == phoneNumber || string.IsNullOrEmpty(phoneNumber))
+            {
+                return false;
+            }
+
+            PhoneNumber = phoneNumber;
+            return true;
+        }
+
+        public bool Activate()
+        {
+            if (State == State.Active)
+            {
+                return false;
+            }
+
+            State = State.Active;
+            return true;
+        }
+
+        public bool Delete()
+        {
+            if (State == State.Deleted)
+            {
+                return false;
+            }
+
+            State = State.Deleted;
+            return true;
+        }
+
+        public bool UpdateSquad(Guid squadId)
+        {
+            if (SquadId == squadId )
+            {
+                return false;
+            }
+
+            SquadId = squadId;
+            return true;
+        }
+
+        public void AddDue(Half half, int amount)
+        {
+            var due = DueFactory.Create(Id, half, amount);
+            Dues.Add(due);
+        }
+
+        public void PayDue(Guid dueId)
+        {
+            var due = Dues.FirstOrDefault(due => due.Id == dueId)
+                ?? throw new NullReferenceException();
+
+            due.Pay();
+        }
+
+        public void UpdateDueAmount(Guid dueId, int amount)
+        {
+            var due = Dues.FirstOrDefault(due => due.Id == dueId)
+                ?? throw new NullReferenceException();
+
+            due.UpdateAmount(amount);
+        }
 }

@@ -21,5 +21,47 @@ public sealed class Category : Aggregate
     public State State { get;private set; }
     public ICollection<Item.Item> Items { get; }
 
+    public bool UpdateName(string name)
+    {
+        if (Name == name || string.IsNullOrEmpty(name))
+        {
+            return false;
+        }
 
+        Name = name;
+        return true;
+    }
+
+    public bool UpdateDescription(string description)
+    {
+        if (Description == description || string.IsNullOrEmpty(description))
+        {
+            return false;
+        }
+
+        Description = description;
+        return true;
+    }
+
+    public bool Activate()
+    {
+        if (State == State.Active)
+        {
+            return false;
+        }
+
+        State = State.Active;
+        return true;
+    }
+
+    public bool Delete()
+    {
+        if (State == State.Deleted)
+        {
+            return false;
+        }
+
+        State = State.Deleted;
+        return true;
+    }
 }

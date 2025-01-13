@@ -22,4 +22,6 @@ public sealed class LoanHistory : Entity
     public Guid ItemId { get; }
     public Guid BorrowerId { get; }
     public Guid ReceiverId { get; }
+    
+    
 }

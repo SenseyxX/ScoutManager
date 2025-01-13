@@ -1,5 +1,6 @@
 using ScoutManager.Entites;
 using ScoutManager.Entites.Abstractions;
+using ScoutManager.Factories;
 
 namespace ScoutManager.Entities.Item;
 
@@ -39,4 +40,104 @@ public sealed class
     public Guid ActualOwnerId { get; private set; }
     public ICollection<LoanHistory> LoanHistories { get; } // Stworzenie relacji jeden do wielu (jeden Item może mieć wiele LoanHistory)
 
+    // ToDo Dodanie Zdjęcia
+
+        // Metody wywoływane przy aktualizacji wartości w serwisie
+        public bool UpdateName(string name) // Metoda wywoływana przy aktualizacji wartości w serwisie
+        {
+            if (Name == name)
+            {
+                return false;
+            }
+
+            Name = name;
+            return true;
+        }
+
+        public bool UpdateDescription(string description)
+        {
+            if (Description == description)
+            {
+                return false;
+            }
+
+            Description = description;
+            return true;
+        }
+
+        public bool UpdateQuantity(int quantity)
+        {
+            if (Quantity == quantity)
+            {
+                return false;
+            }
+
+            Quantity = quantity;
+            return true;
+        }
+
+        public bool UpdateOwner(Guid actualOwnerId)
+        {
+            if (ActualOwnerId == actualOwnerId)
+            {
+                return false;
+            }
+
+            ActualOwnerId = actualOwnerId;
+
+            var loanHistory = LoanHistoryFactory.Create(
+                DateTime.Now,
+                Id,
+                OwnerId,
+                ActualOwnerId);
+
+            LoanHistories.Add(loanHistory);
+
+            return true;
+        }
+        
+        public bool UpdateCategory(Guid categoryId)
+        {
+            if (CategoryId == categoryId)
+            {
+                return false;
+            }
+
+            CategoryId = categoryId;
+            return true;
+        }
+
+        public bool UpdateQuality(QualityLevel qualityLevel)
+        {
+            if (QualityLevel == qualityLevel)
+            {
+                return false;
+            }
+
+            QualityLevel = qualityLevel;
+            return true;
+        }
+
+        // Metody zmieniające stan Itemu funkcja która zastępuje usuwanie wartości przez zmiane statusu.
+        public bool Activate()
+        {
+            if (State == State.Active)
+            {
+                return false;
+            }
+
+            State = State.Active;
+            return true;
+        }
+
+        public bool Delete()
+        {
+            if (State == State.Deleted)
+            {
+                return false;
+            }
+
+            State = State.Deleted;
+            return true;
+        }
 }
