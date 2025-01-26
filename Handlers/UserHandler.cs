@@ -1,3 +1,6 @@
+using ScoutManager.Commands.User;
+using ScoutManager.Dtos.Item;
+using ScoutManager.Dtos.User;
 using ScoutManager.Factories;
 using ScoutManager.Repositories;
 

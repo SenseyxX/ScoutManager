@@ -1,3 +1,5 @@
+using ScoutManager.Commands.Category;
+using ScoutManager.Dtos.Category;
 using ScoutManager.Factories;
 using ScoutManager.Repositories;
 

@@ -1,3 +1,5 @@
+using ScoutManager.Commands.Rental;
+using ScoutManager.Dtos.Rental;
 using ScoutManager.Entities.Rental;
 using ScoutManager.Repositories;
 

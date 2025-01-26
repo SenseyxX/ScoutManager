@@ -1,3 +1,5 @@
+using ScoutManager.Commands.Squad;
+using ScoutManager.Dtos.Squad;
 using ScoutManager.Factories;
 using ScoutManager.Repositories;
 
